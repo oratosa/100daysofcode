@@ -21,7 +21,7 @@ MENU = {
             "coffee": 24,
         },
         "cost": 3.0,
-    }
+    },
 }
 
 resources = {
@@ -30,7 +30,8 @@ resources = {
     "coffee": 100,
 }
 
-def is_resource_sufficient(order: str) -> bool:    
+
+def is_resource_sufficient(order: str) -> bool:
     is_sufficient = True
     for ingredient in MENU[order]["ingredients"]:
         if MENU[order]["ingredients"][ingredient] >= resources[ingredient]:
@@ -38,14 +39,14 @@ def is_resource_sufficient(order: str) -> bool:
             is_sufficient = False
     return is_sufficient
 
-    
+
 def process_coins() -> float:
     print("Please insert coins.")
     quaters = int(input("How many quaters?: "))
     dimes = int(input("How many dimes?: "))
     nickles = int(input("How many nickles?: "))
     pennies = int(input("How many pennies?: "))
-    amount = quaters * 0.25 + dimes *  0.10 + nickles * 0.05 + pennies * 0.01
+    amount = quaters * 0.25 + dimes * 0.10 + nickles * 0.05 + pennies * 0.01
     return amount
 
 
@@ -87,7 +88,9 @@ while is_on:
         print("Under maintanance")
         is_on = False
     elif order == "report":
-        print(f"Water: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}ml\nMoney: ${revenue}")
+        print(
+            f"Water: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}ml\nMoney: ${revenue}"
+        )
     elif order == "espresso" or order == "latte" or order == "cappuccino":
         if is_resource_sufficient(order):
             deposit = process_coins()
